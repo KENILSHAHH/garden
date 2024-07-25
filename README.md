@@ -2,8 +2,9 @@
 
 We have built an app that can bridge BTC to WBTC from Bitcoin to AggLayer chains such as Polygon zkEVM Cardona, Astar's Zkyoto, Sepolia etc. using [Garden SDK](https://docs.garden.finance/developers/sdk/) and [AggLayer Bridge](https://polygon.technology/agglayer)  
 
-##Video Link
-[LOOM](https://www.loom.com/share/d3b4a59de51f4f70a1c0ca7b82e3cf58)
+## Video Link
+
+[Loom](https://www.loom.com/share/d3b4a59de51f4f70a1c0ca7b82e3cf58)
 
 ## Project Setup
 
