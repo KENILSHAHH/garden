@@ -16,7 +16,7 @@ import {
 } from '@gardenfi/orderbook';
 import { GardenJS } from '@gardenfi/core';
 import UnifiedBridge from './UnifiedBridge.js';
-import { JsonRpcProvider, Wallet } from 'ethers';
+import { JsonRpcProvider, Wallet,ethers } from 'ethers';
 
 // Option 1: Create a bitcoin wallet from a private key
 // const bitcoinWallet = BitcoinWallet.fromPrivateKey(
@@ -29,7 +29,13 @@ const bitcoinWallet = BitcoinWallet.fromWIF(
   'cSMmMk6YmV6qHjR7Zbn8FCBXYcRk2xJ5dpmQYYQa5DswbKNZYu9W',
   new BitcoinProvider(BitcoinNetwork.Testnet)
 );
-
+// const provider = new ethers.providers.JsonRpcProvider(
+//   'https://eth-sepolia.g.alchemy.com/v2/BQyVin0-QGVGoRC5NbfS892zybhRshxY'
+// );
+// const wallet = new ethers.Wallet(
+//   'a1fd1aaafec01bd86ea80ccbe856168b2ecdd7ead53c764ac6e1f7ff4864452e',
+//   provider
+// );
 // create your evm wallet
 const signer = new Wallet(
   'a1fd1aaafec01bd86ea80ccbe856168b2ecdd7ead53c764ac6e1f7ff4864452e',
@@ -37,8 +43,7 @@ const signer = new Wallet(
     'https://eth-sepolia.g.alchemy.com/v2/BQyVin0-QGVGoRC5NbfS892zybhRshxY'
   )
 );
-const evmWallet = new EVMWallet(signer);
-
+  const evmWallet = new EVMWallet(signer);
 (async () => {
   const orderbook = await Orderbook.init({
     url: TESTNET_ORDERBOOK_API, // add this line only for testnet
@@ -74,31 +79,32 @@ const evmWallet = new EVMWallet(signer);
     ) {
       const swapper = garden.getSwap(order);
         const swapOutput = await swapper.next();
-        if (swapOutput.action == 'Redeem') {
-                setTimeout(async () => {
-
-            const contract = new ethers.Contract(
-              '0x528e26b25a34a4a5d0dbda1d57d318153d2ed582',
-              UnifiedBridge,
-              evmWallet
-            );
-            const txn = await contract.bridgeAsset(
-              1,
-              '0xAA6C32B4C3B869201A3e162F24bBe37BCacB02D9',
-              100000n,
-              '0xaD9d14CA82d9BF97fFf745fFC7d48172A1c0969E',
-              forceUpdateGlobalExitRoot,
-              '0x'
-            );
-                    console.log(txn)
-                        }, 60000);
-
-          }
+       
       console.log(
         `Completed Action ${swapOutput.action} with transaction hash: ${swapOutput.output}`
       );
+        if (swapOutput.action === 'Redeem') {
+             console.log("hey")
+           setTimeout(async () => {
+      
+        const contract = new ethers.Contract(
+          '0x528e26b25a34a4a5d0dbda1d57d318153d2ed582',
+          UnifiedBridge,
+          signer
+        );
+     
+        const txn = await contract.bridgeAsset(
+          1, // [sepolia,polygonzkEVM, Astar]
+          '0xAA6C32B4C3B869201A3e162F24bBe37BCacB02D9',
+          10000n,
+          '0xaD9d14CA82d9BF97fFf745fFC7d48172A1c0969E',
+          true,
+          '0x'
+        );
+             console.log("Agglayer bridge txn hash" , txn.hash);
+           }, 60000);
+         }
     }
   });
   
 })();
-
