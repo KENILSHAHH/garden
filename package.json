@@ -1,0 +1,29 @@
+{
+  "name": "garden",
+  "version": "1.0.0",
+  "description": "garden",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KENILSHAHH/garden.git"
+  },
+  "keywords": [
+    "garden"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KENILSHAHH/garden/issues"
+  },
+  "homepage": "https://github.com/KENILSHAHH/garden#readme",
+  "dependencies": {
+    "@catalogfi/wallets": "^0.2.45",
+    "@gardenfi/core": "^0.1.15",
+    "@gardenfi/orderbook": "^0.1.10",
+    "ethers": "^6.8.0"
+  }
+}
