@@ -1,6 +1,8 @@
 ## Garden Bridge
 
-We have built an app that can bridge BTC to WBTC from Bitcoin to AggLayer chains such as Polygon zkEVM Cardona, Astar's Zkyoto, Sepolia etc. using [Garden SDK](https://docs.garden.finance/developers/sdk/) and [AggLayer Bridge](https://polygon.technology/agglayer)  
+We have built an app that can bridge BTC to WBTC from Bitcoin to AggLayer chains such as Polygon zkEVM Cardona, Astar's Zkyoto, Sepolia etc. using [Garden SDK](https://docs.garden.finance/developers/sdk/) and [AggLayer Bridge](https://polygon.technology/agglayer)
+
+Unified Contract deployed on Wanchain - https://testnet.wanscan.org/address/0x8c43FEAbe31C39f009B7A843b0Fe64689F4ceb74
 
 ## Video Link
 
